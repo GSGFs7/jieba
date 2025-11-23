@@ -17,7 +17,7 @@ check_paddle_install = {"is_paddle_installed": False}
 try:
     from importlib.resources import files
 
-    get_module_res = lambda *res: files(__name__.split(".")[0]).joinpath(*res)
+    get_module_res = lambda *res: files(__name__.split(".")[0]).joinpath(*res).open("rb")
 except ImportError:
     get_module_res = lambda *res: open(
         os.path.normpath(os.path.join(os.getcwd(), os.path.dirname(__file__), *res)),
